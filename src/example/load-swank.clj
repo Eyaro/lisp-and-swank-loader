@@ -1,4 +1,4 @@
-(ns example
+(ns example.load-swank
  (:use swank.loader lisp.loader))
 
 (comment 
