@@ -39,9 +39,9 @@
 
 (defn launch [lisp swank]
   (with-lisp ((start-lisp lisp) swank) 
-    (prog1
-      (startup-lisp-monitor monitor-lisp-stream)
-      (load-swank))))
+    (let [thread-group (startup-lisp-monitor monitor-lisp-stream)]
+    	(load-swank)
+    	[*lisp* thread-group])))
 
 ;;;;EXAMPLE
 

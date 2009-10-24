@@ -19,6 +19,7 @@
                    (= (apply f (.read channel (clear buf)) buf args) *exit-thread-gensym*)))
           (do (Thread/sleep 100)
             (recur)))))))
+            
 (defn redirect-stream [input-stream f & args]
   (with-global-thread (nil nil true) [*lisp* *swank*]
     (redirect-stream-helper input-stream f args)))
@@ -48,6 +49,6 @@
               monitor-lisp-stream (atom ""))
         th2 (redirect-grouped-stream @(:error-stream *lisp*) grouped-thread
               monitor-lisp-stream (atom ""))]
-    [th1 th2 grouped-thread]))
+    grouped-thread))
 
 
