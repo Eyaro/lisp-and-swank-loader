@@ -1,8 +1,7 @@
-
 (ns lisp.loader
  (:use
-   utils.package))
-
+   utils.package)
+ (:import (java.io DataOutputStream)))
 
 (defstruct lisp-implementation
   :type
@@ -13,13 +12,14 @@
   :input-stream :error-stream
   :input-thread :error-thread)
 
-(defn- mk-lisp-structure [& args]
+(defn- mk-lisp-structure [& args]  
   (apply struct-map lisp-implementation
     :input-thread (atom nil) :error-thread (atom nil)
     args))
 
-(load-files "multimethods")
+(defn lisp-type [lisp & args] (:type lisp))
 
+;;;;;;;;;;
 (defn lisp-exit-code [lisp-implementation]
   (awhen (:process lisp-implementation)
     (.exitValue it)))
