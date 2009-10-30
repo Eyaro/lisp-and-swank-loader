@@ -1,6 +1,7 @@
-(in-ns 'utils.package)
-(import '(java.lang ProcessBuilder Thread ThreadGroup))
-(use '[clojure.contrib.pprint :only (cl-format)])
+(ns utils.java
+  (:import (java.lang ProcessBuilder Thread ThreadGroup))
+  (:use [clojure.contrib.pprint :only (cl-format)]
+    utils.sequence))
 
 (defn jprint [st & items]
   (if (string? st)

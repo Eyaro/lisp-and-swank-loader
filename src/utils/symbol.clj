@@ -1,5 +1,5 @@
-(in-ns 'utils.package)
-
+(ns utils.symbol
+ (:use utils.core))
 (defn sym-to-key [sym] (if (keyword? sym) sym (read-string (str ":" sym))))
 
 (defn sym-equals [sym1 sym2] (.equalsIgnoreCase (str sym1) (str sym2)))

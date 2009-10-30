@@ -1,11 +1,12 @@
-(in-ns 'utils.package)
-(import
-  '(java.nio.channels Channels FileLock ServerSocketChannel Selector)
-  '(java.nio ByteBuffer CharBuffer)
-  '(java.nio.charset CharsetEncoder CharsetDecoder Charset)
-  '(java.io File InputStream OutputStream
+(ns utils.nio
+ (:import
+   (java.nio.channels Channels FileLock ServerSocketChannel Selector)
+   (java.nio ByteBuffer CharBuffer)
+   (java.nio.charset CharsetEncoder CharsetDecoder Charset)
+   (java.io File InputStream OutputStream
      FileInputStream FileOutputStream RandomAccessFile)
-  '(java.lang Byte))
+   (java.lang Byte))
+ (:use utils.sequence utils.string utils.core))
 
 (defmacro with-duplicate-buffer [buf & body]
   (let [[buf-new-name buf-val] (if (coll? buf)

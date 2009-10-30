@@ -1,6 +1,6 @@
 (ns swank.loader
  (:use
-   utils.package
+   utils.core utils.java utils.nio  utils.sequence
    lisp.loader
    clojure.contrib.def)
  (:require [clojure.contrib.str-utils2 :as s]))
@@ -15,7 +15,7 @@
                                 &op port *port*]
   (struct-map swank :type lisp-type :port port :swank-load-cmd swank-load-cmd))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;REDIRECTION OF LISP STREAM
-(load-files "redirect")
+(load "redirect")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;SWANK UTILITIES UTILITIES
 
 
@@ -40,9 +40,9 @@
 (defn launch [lisp swank]
   (with-lisp ((start-lisp lisp) swank) 
     (let [thread-group (startup-lisp-monitor monitor-lisp-stream)]
-    	(load-swank)
-    	[*lisp* thread-group])))
+      (load-swank)
+      (merge *lisp* {:worker-threads thread-group}))))
 
-;;;;EXAMPLE
+
 
 

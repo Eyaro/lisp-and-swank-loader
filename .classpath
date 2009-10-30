@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="classes"/>
-	<classpathentry kind="lib" path="clojure-contrib-1.0.0.jar"/>
-	<classpathentry kind="lib" path="clojure-1.0.0.jar"/>
+	<classpathentry kind="lib" path="clojure-1.09.11.jar"/>
+	<classpathentry kind="lib" path="clojure-contrib-1.09.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

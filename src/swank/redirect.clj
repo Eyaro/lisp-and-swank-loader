@@ -9,6 +9,9 @@
   ([thread-group]
     (.interrupt thread-group)
     *exit-thread-gensym*))
+(defn kill-and-exit-thread []
+  (kill-lisp *lisp*) (jprintln "FATAL ERROR!")
+  (exit-thread))
 
 (defn- redirect-stream-helper [input-stream f args]
   (let [channel (nio input-stream)]
@@ -35,7 +38,7 @@
           s (str @string-atom buf-str)]
       (jprintln buf-str)
       (cond
-        (find-fatal-error *lisp* buf-str) (do (jprintln "Fatal Error!!!") (exit-thread))
+        (find-fatal-error *lisp* buf-str) (kill-and-exit-thread)
         (re-find #"(?i)Swank started" s) (do (jprintln "Swank Started!!!") (exit-thread))
         :else (let [result (s/split-lines s)]
                 (if (single? result)

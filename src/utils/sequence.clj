@@ -1,4 +1,5 @@
-(in-ns 'utils.package)
+(ns utils.sequence
+  (:use utils.core))
 
 ;;from on-lisp->clojure converting project/blog
 (defn- sym-to-key [sym] (if (keyword? sym) sym (read-string (str ":" sym))))
