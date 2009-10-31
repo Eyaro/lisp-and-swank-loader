@@ -19,12 +19,12 @@
 
 (comment
   (def *lisp* (start-lispin))
-  
+  ;;you have to wait until lisp is loaded until you do the following...
+  (join-lisp *lisp*)
   (def *client*  
     (start-client
       nil
       #'client-decide
-      :host "127.0.0.1" :port 4040))
-  
+      :host "127.0.0.1" :port 4040)) 
   (write-to-connection *client* "(:emacs-rexs '(print 'hi))")
   )

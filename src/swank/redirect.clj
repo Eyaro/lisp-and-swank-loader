@@ -52,6 +52,8 @@
               monitor-lisp-stream (atom ""))
         th2 (redirect-grouped-stream @(:error-stream *lisp*) grouped-thread
               monitor-lisp-stream (atom ""))]
+    (reset! (:error-thread *lisp*) th2)
+    (reset! (:input-thread *lisp*) th1)
     grouped-thread))
 
 

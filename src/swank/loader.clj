@@ -37,7 +37,9 @@
   `(let [lisp# ~lisp swank# ~swank]
      (binding [~'*lisp* lisp# ~'*swank* swank#] ~@body)))
 
-
+(defn join-lisp [lisp]
+  (.join @(:error-thread lisp)))
+  
 (defn launch [lisp swank]
   (with-lisp ((start-lisp lisp) swank) 
     (let [thread-group (startup-lisp-monitor monitor-lisp-stream)]
