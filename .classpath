@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="classes"/>
 	<classpathentry kind="lib" path="clojure-1.09.11.jar"/>
 	<classpathentry kind="lib" path="clojure-contrib-1.09.11.jar"/>
+	<classpathentry kind="lib" path="swank-clojure.jar"/>
+	<classpathentry kind="lib" path="swank-client23.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

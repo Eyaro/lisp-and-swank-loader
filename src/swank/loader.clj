@@ -6,8 +6,9 @@
  (:require [clojure.contrib.str-utils2 :as s]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;BACKBONE
-(def *lisp* nil) (def *swank* nil)
-(defvar *port* 4040)
+(defvar- *lisp* nil) 
+(defvar- *swank* nil)
+(defvar- *port* 4040)
 (defstruct swank :port :swank-load-cmd :type)
 
 (defmulti new-swank (fn [& args] (first args)))
